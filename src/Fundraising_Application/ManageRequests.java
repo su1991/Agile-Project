@@ -210,23 +210,7 @@ public class ManageRequests extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try  
-{  
-
-File f = new File("src\\DataBase\\ManageApplicantsRequests.txt");   
-if(!Desktop.isDesktopSupported())
-{  
-System.out.println("aint working");  
-return;  
-}  
-Desktop desktop = Desktop.getDesktop();  
-if(f.exists())        
-desktop.open(f);              
-}  
-catch(Exception e)  
-{  
-e.printStackTrace();  
-}  
+  
         
         
          try {
