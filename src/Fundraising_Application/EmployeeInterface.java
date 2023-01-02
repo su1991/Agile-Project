@@ -33,7 +33,7 @@ import org.controlsfx.control.Notifications;
 public class EmployeeInterface extends javax.swing.JFrame {
     
     
-ArrayList <CustomerAccount> Customers;
+ArrayList <RegisteredDoner> Customers;
 
 
 
@@ -48,7 +48,7 @@ ArrayList <CustomerAccount> Customers;
         
         initComponents();
         
-               Customers = new ArrayList<CustomerAccount>();
+               Customers = new ArrayList<RegisteredDoner>();
                
                 //Notifications.create()
                        // .title("Pending Request/s")
@@ -79,138 +79,138 @@ ArrayList <CustomerAccount> Customers;
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
-        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(505, 285));
+        setTitle("Admin Interface");
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setMinimumSize(new java.awt.Dimension(800, 569));
+        setPreferredSize(new java.awt.Dimension(800, 569));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setText("Collect All Customers Data");
+        jButton1.setActionCommand("Collect User Data");
+        jButton1.setLabel("Display All Doners Data");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, 40));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 180, 170, 40));
 
-        jButton2.setText("Manage Requests");
+        jButton2.setLabel("Manage Volunteer Requests");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 200, 158, 40));
-        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 480, 10));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Fundraising_Application/logo.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, -1, -1));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 180, 180, 40));
+        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 760, 10));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "Username", "Password", "Email", "Phone_Number", "Address", "Credit_Card_Number", "Bank_Account_Number"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 480, 230));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 760, 160));
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Fundraising_Application/template3 - Copy.png"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 758, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 88, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 760, 90));
+
+        jButton3.setActionCommand("Collect User Data");
+        jButton3.setLabel("View Donation History ");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, -1, 40));
+
+        jButton4.setActionCommand("Collect User Data");
+        jButton4.setLabel("Mange Donations");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 130, 40));
+
+        jButton5.setLabel("Log out");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 180, 90, 40));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    try
-        {
+   
         
-            FileInputStream file = new FileInputStream("src\\DataBase\\Customers.dat");
-            ObjectInputStream inputFile = new ObjectInputStream(file);
-        boolean endOfFile = false;
-        
-        while (!endOfFile){
-            
-            try 
-            {
-              Customers.add((CustomerAccount) inputFile.readObject());
-                
-            }
-            catch (EOFException e)
-            {
-                endOfFile = true;
-            }
-            catch (Exception f)
-            {
-             //JOptionPane.showMessageDialog(null, f.getMessage());
-            }
-        }
-        
-        inputFile.close();
-        }
-        catch (IOException e){
-            
-          //  JOptionPane.showMessageDialog(null, e.getMessage());
-            
-        }
-        
-            
- try
-        {
-        
-            FileInputStream file = new FileInputStream("src\\DataBase\\Cutomers.dat");
-            ObjectInputStream inputFile = new ObjectInputStream(file);
-        
-        FileWriter fw5=new FileWriter("src\\DataBase\\CutomersData.txt", true);  
-        
-        
-       for (int i=0;i<Customers.size();i++){
+         
            
-            try 
-            {
-              
-                   fw5.write( "\n" + Customers.get(i).getName() + "\n" + Customers.get(i).getEmail()+ "\n" + Customers.get(i).getPhoneNumber()+ "\n" + Customers.get(i).getPlaceAddress()+"\n" + Customers.get(i).getPassword() + "\n" + Customers.get(i).getAccountNumber() + "\n" + Customers.get(i).getCreditCardNumber() + "\n" + Customers.get(i).getBalance());
-                  
-            }
-            catch (Exception f)
-            {
-             //JOptionPane.showMessageDialog(null, f.getMessage());
-            }
-          
-        }
-        fw5.close();  
-       
-        inputFile.close();
-        }
-        catch (IOException e){
             
-            //JOptionPane.showMessageDialog(null, e.getMessage());
+            
+            try {
+            
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/registered_doner","root", "1234567890");
+            
+            
+            
+            PreparedStatement st = (PreparedStatement) connection.prepareStatement("Select * from registered_doner");
+            
+            ResultSet rs = st.executeQuery();
+            
+            
+            
+            while (rs.next()){
+                
+                String id = String.valueOf(rs.getInt("ID"));
+                String username = rs.getString("Username");
+                String Password = rs.getString("Password");
+                String Email = rs.getString("Email");
+                String Phone_number = rs.getString("Phone_number");
+                String Address = rs.getString("Address");
+                String Credit_Card_Number = rs.getString("Credit_Card_Number");
+                String Bank_Account_Number = rs.getString("Bank_Account_Number");
+                     
+                String tbData[] = {id, username, Password, Email, Phone_number, Address, Credit_Card_Number, Bank_Account_Number};
+                DefaultTableModel RecordTable = (DefaultTableModel)jTable1.getModel();
+                RecordTable.addRow(tbData);
+            }
+        }
+        catch (Exception e){
+            
+            System.out.println(e.getMessage());
             
         }
- 
-         try  
-{  
-
-File f = new File("src\\DataBase\\CutomersData.txt");   
-if(!Desktop.isDesktopSupported())
-{  
-System.out.println("aint working");  
-return;  
-}  
-Desktop desktop = Desktop.getDesktop();  
-if(f.exists())        
-desktop.open(f);              
-}  
-catch(Exception e)  
-{  
-e.printStackTrace();  
-}  
-         
-         
          
          
          
@@ -222,6 +222,20 @@ e.printStackTrace();
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         new ManageRequests().setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        new MangeDonations1().setVisible(true);
+        
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        new Login_Interface().setVisible(true);
+        dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -261,7 +275,11 @@ e.printStackTrace();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable1;

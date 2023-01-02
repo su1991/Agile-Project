@@ -7,19 +7,24 @@ package Fundraising_Application;
 import java.awt.Desktop;  
 import java.io.*;
 import java.io.FileWriter;  
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author flossycat
  */
 public class ManageRequests extends javax.swing.JFrame {
-  ArrayList <Applications> Applications;
+  ArrayList <VolunteerApplications> Applications;
     /**
      * Creates new form ManageRequests
      */
     public ManageRequests() {
-         Applications = new ArrayList<Applications>();
+         Applications = new ArrayList<VolunteerApplications>();
         initComponents();
         populateArrayList2();
     }
@@ -36,7 +41,7 @@ public class ManageRequests extends javax.swing.JFrame {
             
             try 
             {
-              Applications.add((Applications) inputFile.readObject());
+              Applications.add((VolunteerApplications) inputFile.readObject());
                 
             }
             catch (EOFException e)
@@ -126,12 +131,15 @@ public class ManageRequests extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         InsertText = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(280, 350));
+        setTitle("Manage Volunteer Signup Requests");
+        setMinimumSize(new java.awt.Dimension(650, 350));
+        setPreferredSize(new java.awt.Dimension(650, 350));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setActionCommand("Show Appl ication Requests");
@@ -166,25 +174,37 @@ public class ManageRequests extends javax.swing.JFrame {
                 InsertTextActionPerformed(evt);
             }
         });
-        getContentPane().add(InsertText, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 186, -1));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Fundraising_Application/logo.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
+        getContentPane().add(InsertText, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 190, -1));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "Name", "Major", "Level", "Email", "PhoneNumber", "Address"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, 380, 270));
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Fundraising_Application/template2.png"))); // NOI18N
+        jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 170));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 190, 170));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -207,6 +227,42 @@ catch(Exception e)
 {  
 e.printStackTrace();  
 }  
+        
+        
+         try {
+            
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/volunteer","root", "1234567890");
+            
+            
+            
+            PreparedStatement st = (PreparedStatement) connection.prepareStatement("Select * from volunteer");
+            
+            ResultSet rs = st.executeQuery();
+            
+            
+            
+            while (rs.next()){
+                
+                String ID = String.valueOf(rs.getInt("ID"));
+                String Name = rs.getString("Name");
+                String Major = rs.getString("Major");
+                String Level = rs.getString("Level");
+                String Email = rs.getString("Email");
+                String PhoneNumber = rs.getString("PhoneNumber");
+                String Address = rs.getString("Address");
+                //String Bank_Account_Number = rs.getString("Documentation");
+                     
+                String tbData[] = {ID, Name, Major, Level, Email, PhoneNumber, Address};
+                DefaultTableModel RecordTable = (DefaultTableModel)jTable1.getModel();
+                RecordTable.addRow(tbData);
+            }
+        }
+        catch (Exception e){
+            
+            System.out.println(e.getMessage());
+            
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -226,7 +282,7 @@ e.printStackTrace();
        
         
        
-        Applications application =new Applications(ApplicationNumber,Applicationstatus);
+        VolunteerApplications application =new VolunteerApplications(ApplicationNumber,Applicationstatus);
         
         Applications.add(application);
         saveApplicationsToFile();
@@ -279,7 +335,7 @@ e.printStackTrace();
        
         
        
-        Applications application =new Applications(ApplicationNumber,Applicationstatus);
+        VolunteerApplications application =new VolunteerApplications(ApplicationNumber,Applicationstatus);
         
         Applications.add(application);
         saveApplicationsToFile();
@@ -362,7 +418,8 @@ e.printStackTrace();
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
